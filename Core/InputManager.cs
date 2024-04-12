@@ -13,7 +13,9 @@ public class InputManager : Singleton<InputManager>
         base.Awake();
         m_input = new PlayerIA();
     }
-    
+
+    protected override void Init() {}
+
     private void OnEnable()
     {
         m_input.Enable();

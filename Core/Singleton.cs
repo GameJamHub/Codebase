@@ -5,7 +5,7 @@ using UnityEngine;
 
 namespace Codebase.Core
 {
-    public class Singleton<T> : MonoBehaviour where T : Component
+    public abstract class Singleton<T> : MonoBehaviour where T : Component
     {
 
         private static T _instance;
@@ -39,6 +39,7 @@ namespace Codebase.Core
                 {
                     transform.parent = null;
                 }
+                Init();
                 DontDestroyOnLoad(gameObject);
             }
             else
@@ -46,6 +47,8 @@ namespace Codebase.Core
                 Destroy(gameObject);
             }
         }
+
+        protected abstract void Init();
     }
 }
 
