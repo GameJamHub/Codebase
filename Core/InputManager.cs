@@ -19,15 +19,13 @@ public class InputManager : Singleton<InputManager>
     private void OnEnable()
     {
         m_input.Enable();
-        m_input.Player.Movement.performed += OnMovementPerformed;
-        m_input.Player.Movement.canceled += OnMovementCancelled;
+        EnableInput();
     }
 
     private void OnDisable()
     {
         m_input.Disable();
-        m_input.Player.Movement.performed -= OnMovementPerformed;
-        m_input.Player.Movement.canceled -= OnMovementCancelled;
+        DisableInputs();
     }
 
     public void EnableInput()
@@ -35,6 +33,7 @@ public class InputManager : Singleton<InputManager>
         m_input.Enable();
         m_input.Player.Movement.performed += OnMovementPerformed;
         m_input.Player.Movement.canceled += OnMovementCancelled;
+        m_input.Player.Jump.performed += OnJumpPerformed;
     }
 
     public void DisableInputs()
@@ -42,6 +41,12 @@ public class InputManager : Singleton<InputManager>
         m_input.Disable();
         m_input.Player.Movement.performed -= OnMovementPerformed;
         m_input.Player.Movement.canceled -= OnMovementCancelled;
+        m_input.Player.Jump.performed -= OnJumpPerformed;
+    }
+
+    private void OnJumpPerformed(InputAction.CallbackContext value)
+    {
+        GameplayEvents.SendOnJump();
     }
     
     private void OnMovementPerformed(InputAction.CallbackContext value)
@@ -63,6 +68,6 @@ public class InputManager : Singleton<InputManager>
         }
 
         Vector2 axisValue = value.ReadValue<Vector2>();
-        GameplayEvents.SendOnMovement(axisValue, true);
+        GameplayEvents.SendOnMovement(axisValue, false);
     }
 }

@@ -11,6 +11,13 @@ namespace Codebase.Core
         {
             OnMovement?.Invoke(axisValue, canMove);
         }
+
+        public static event Action OnJump;
+
+        public static void SendOnJump()
+        {
+            OnJump?.Invoke();
+        }
     }
 }
 
