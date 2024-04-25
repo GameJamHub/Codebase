@@ -34,6 +34,8 @@ public class InputManager : Singleton<InputManager>
         m_input.Player.Movement.performed += OnMovementPerformed;
         m_input.Player.Movement.canceled += OnMovementCancelled;
         m_input.Player.Jump.performed += OnJumpPerformed;
+        m_input.Player.ShortRange.performed += OnShortAttackPerformed;
+        m_input.Player.LongRange.performed += OnLongAttackPerformed;
     }
 
     public void DisableInputs()
@@ -42,11 +44,23 @@ public class InputManager : Singleton<InputManager>
         m_input.Player.Movement.performed -= OnMovementPerformed;
         m_input.Player.Movement.canceled -= OnMovementCancelled;
         m_input.Player.Jump.performed -= OnJumpPerformed;
+        m_input.Player.ShortRange.performed -= OnShortAttackPerformed;
+        m_input.Player.LongRange.performed -= OnLongAttackPerformed;
     }
 
     private void OnJumpPerformed(InputAction.CallbackContext value)
     {
         GameplayEvents.SendOnJump();
+    }
+
+    private void OnShortAttackPerformed(InputAction.CallbackContext value)
+    {
+        GameplayEvents.SendOnShortAttackPerformed();
+    }
+
+    private void OnLongAttackPerformed(InputAction.CallbackContext value)
+    {
+        GameplayEvents.SendOnLongAttackPerformed();
     }
     
     private void OnMovementPerformed(InputAction.CallbackContext value)

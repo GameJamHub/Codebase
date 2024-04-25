@@ -18,6 +18,18 @@ namespace Codebase.Core
         {
             OnJump?.Invoke();
         }
+
+        public static event Action OnShortAttackPerformed;
+        public static void SendOnShortAttackPerformed()
+        {
+            OnShortAttackPerformed?.Invoke();
+        }
+
+        public static event Action OnLongAttackPerformed;
+        public static void SendOnLongAttackPerformed()
+        {
+            OnLongAttackPerformed?.Invoke();
+        }
     }
 }
 
