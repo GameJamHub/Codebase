@@ -4,7 +4,7 @@ using UnityEngine;
 
 namespace Codebase.Audio
 {
-    public static partial class AudioChannelData
+    public partial class AudioChannelData
     {
         public const int CHANNEL_1 = 1;
         public const int CHANNEL_2 = CHANNEL_1 + 1;
