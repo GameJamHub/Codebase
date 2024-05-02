@@ -19,6 +19,18 @@ namespace Codebase.Core
             OnJump?.Invoke();
         }
 
+        public static event Action OnAbsorbPerformed;
+        public static void SendOnAbsorbPerformed()
+        {
+            OnAbsorbPerformed?.Invoke();
+        }
+
+        public static event Action OnDashPerformed;
+        public static void SendOnDashPerformed()
+        {
+            OnDashPerformed?.Invoke();
+        }
+
         public static event Action OnShortAttackPerformed;
         public static void SendOnShortAttackPerformed()
         {
@@ -29,6 +41,12 @@ namespace Codebase.Core
         public static void SendOnLongAttackPerformed()
         {
             OnLongAttackPerformed?.Invoke();
+        }
+
+        public static event Action OnGameOver;
+        public static void SendOnGameOver()
+        {
+            OnGameOver?.Invoke();
         }
     }
 }

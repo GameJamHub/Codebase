@@ -6,8 +6,8 @@ namespace Codebase.Audio
     public class AudioClipReference
     {
         public AudioClip clip;
-        public float volume = 0f;
-        public float pitch = 100f;
+        public float volume = 1f;
+        public float pitch = 1f;
     }
 }
 

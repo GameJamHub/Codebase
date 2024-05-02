@@ -19,7 +19,7 @@ public class InputManager : Singleton<InputManager>
     private void OnEnable()
     {
         m_input.Enable();
-        EnableInput();
+        EnableInputs();
     }
 
     private void OnDisable()
@@ -28,7 +28,7 @@ public class InputManager : Singleton<InputManager>
         DisableInputs();
     }
 
-    public void EnableInput()
+    public void EnableInputs()
     {
         m_input.Enable();
         m_input.Player.Movement.performed += OnMovementPerformed;
